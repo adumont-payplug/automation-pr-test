@@ -9,17 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      contents: read
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Apply template based on target branch
         uses: actions/github-script@v7
         with:
           script: |
             const base = context.payload.pull_request.base.ref;
-            const fs = require('fs');
 
             const templateMap = {
               'main': '.github/PULL_REQUEST_TEMPLATE/release.md',
@@ -33,7 +30,14 @@ jobs:
               return;
             }
 
-            const body = fs.readFileSync(templatePath, 'utf8');
+            // Fetch template content directly via GitHub API (no checkout needed)
+            const { data: fileData } = await github.rest.repos.getContent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: templatePath,
+            });
+
+            const body = Buffer.from(fileData.content, 'base64').toString('utf8');
 
             await github.rest.pulls.update({
               owner: context.repo.owner,
