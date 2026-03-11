@@ -1,0 +1,45 @@
+name: Auto-select PR Template
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  apply-template:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Apply template based on target branch
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const base = context.payload.pull_request.base.ref;
+            const fs = require('fs');
+
+            const templateMap = {
+              'main': '.github/PULL_REQUEST_TEMPLATE/release.md',
+              'develop': '.github/PULL_REQUEST_TEMPLATE/develop.md',
+            };
+
+            const templatePath = templateMap[base];
+
+            if (!templatePath) {
+              console.log(`No template configured for branch "${base}", skipping.`);
+              return;
+            }
+
+            const body = fs.readFileSync(templatePath, 'utf8');
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              body,
+            });
+
+            console.log(`Applied template "${templatePath}" for PR targeting "${base}".`);
