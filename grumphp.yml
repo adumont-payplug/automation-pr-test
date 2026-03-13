@@ -1,0 +1,18 @@
+grumphp:
+    tasks:
+        phpstan:
+            configuration: phpstan.neon
+            use_grumphp_paths: false
+        phpcsfixer:
+            config: .php-cs-fixer.php
+            allow_risky: false
+        git_branch_name:
+            whitelist:
+                - /^(feature|fix|hotfix|refactor|release)\/(JIRA|PRE|MAG|SYL)-\d+/
+            allow_detached_head: true
+        git_commit_message:
+            allow_empty_message: false
+            enforce_capitalized_subject: false
+            enforce_no_subject_trailing_period: false
+            matchers:
+                - /^(JIRA|PRE|MAG|SYL)-\d+: .+/

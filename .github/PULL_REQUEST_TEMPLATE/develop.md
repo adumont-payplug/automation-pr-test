@@ -36,7 +36,6 @@
 ```json
 
 ```
-
 ---
 
 ## Checklist
@@ -47,16 +46,7 @@
 
 ### Testing
 - [ ] Unit tests added / updated
-- [ ] Integration tests added / updated (if applicable)
-- [ ] All tests pass locally (`npm test` / `pytest` / etc.)
-- [ ] Edge cases and error scenarios are covered
-
-### API & Documentation
-- [ ] API contracts unchanged, or changes are backward-compatible
-- [ ] OpenAPI / Swagger docs updated (if applicable)
-- [ ] README or internal docs updated (if applicable)
 
 ### Security & Ops
 - [ ] No sensitive data or secrets introduced
-- [ ] Database migrations are safe to run (no destructive changes)
 - [ ] Logging and error handling are appropriate

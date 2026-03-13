@@ -1,0 +1,14 @@
+{
+    "require": {
+        "phpro/grumphp": "^2.19"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": true
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "friendsofphp/php-cs-fixer": "^3.94"
+    }
+}

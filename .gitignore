@@ -1,1 +1,7 @@
 .idea/
+vendor/
+.env
+.php-cs-fixer.cache
+.claude/*
+phpstan.neon
+.php-cs-fixer.php

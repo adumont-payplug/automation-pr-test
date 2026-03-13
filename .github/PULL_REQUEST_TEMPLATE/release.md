@@ -17,25 +17,15 @@
 - [ ] All tests pass on `develop` (CI green)
 - [ ] No known regressions
 
-### Database & Migrations
-- [ ] Migrations reviewed and tested
-- [ ] Migrations are reversible / rollback plan documented
-- [ ] No destructive schema changes without a fallback
-
-### API & Contracts
-- [ ] Breaking API changes are versioned
-- [ ] OpenAPI / Swagger docs are up to date
-- [ ] Consumers / clients have been notified of changes (if any)
-
 ### Security & Config
 - [ ] No secrets or sensitive data introduced
-- [ ] New environment variables documented and added to all environments
+- [ ] New environment variables are documented and added to all environments
 - [ ] Dependencies checked for known vulnerabilities (`npm audit` / `pip audit`)
 
 ### Observability
 - [ ] New errors are monitored and alerted on
 - [ ] Key operations are traced / instrumented
-- [ ] Dashboards updated if new metrics were added
+- [ ] Information is fed back up to the Portal (if necessary)
 
 ### Deployment
 - [ ] Feature flags set correctly for production
@@ -46,5 +36,5 @@
 
 ## Post-release Checklist
 - [ ] Release tagged in Git (`vX.X.X`)
-- [ ] Release notes published (GitHub Releases / Confluence / Notion)
-- [ ] Team notified (Slack / email)
+- [ ] Release notes published (GitHub Releases)
+- [ ] Team notified (Slack)
