@@ -15,4 +15,4 @@ grumphp:
             enforce_capitalized_subject: false
             enforce_no_subject_trailing_period: false
             matchers:
-                - /^(JIRA|PRE|MAG|SYL)-\d+: .+/
+                "Commit message must start with a JIRA ticket (e.g. PRE-123: ...)": '/^(JIRA|PRE|MAG|SYL)-\d+: .+/'
